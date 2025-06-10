@@ -11,7 +11,6 @@
             <hr />
         </div>
 
-        <!-- Search -->
-       
+      
 
     </div> <!-- /header -->

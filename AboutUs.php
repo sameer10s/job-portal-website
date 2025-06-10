@@ -1,15 +1,3 @@
-<?php
-session_start();
-if(isset($_SESSION['$UserName'])){
-	header('location:Admin/index.php');
-} 
-if(isset($_SESSION['$UserName_job'])){
-	header('location:JobSeeker/index.php');
-} 
-if(isset($_SESSION['$UserName_emp'])){
-	header('location:Employer/index.php');
-} 
-?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
@@ -18,6 +6,7 @@ if(isset($_SESSION['$UserName_emp'])){
     <meta http-equiv="content-language" content="cs" />
     <meta name="robots" content="all,follow" />
 
+  
     
     <title>JOB PORTAL BY SAMEER</title>
     <meta name="description" content="..." />
@@ -31,10 +20,6 @@ if(isset($_SESSION['$UserName_emp'])){
 <!--
 .style1 {
 	color: #000066;
-	font-weight: bold;
-}
-.style2 {
-	font-size: medium;
 	font-weight: bold;
 }
 -->
@@ -86,13 +71,13 @@ include "menu.php"
 
             <!-- Article -->
             <div class="article">
-                <h2><span><a href="#">Welcome To Job Portal System by JITESH</a></span></h2>
-				<h3><marquee>Welcome To Job Portal System by JITESH</marquee></h3>
+                <h2><span><a href="#">About Us</a></span></h2>
                
 
-                <p> <span class="style2">W</span>elcome to online Job Portal. It provides facility to the Job Seeker to search for various jobs as per his qualification. Here Job Seeker can registered himself on the web portal and create his profile along with his educational information. Job Seeker can search various jobs and apply for the Job.</p>
-              <p>This Portal is also designed for the various employer who required to recruit employees in their organization. Employer can registered himself on the web portal and then he can upload information of various job vacancies in their organization. Employeer can view the applications of Job Seeker and send call latter to the job seekers.</p>
-              <p align="right"> <img src="design/banner-4.jpg" alt="" width="510" height="300" /></p>
+                <p>Welcome to online Job Portal. It provides facility to the Job Seeker to search for various jobs as per his qualification. Here Job Seeker can registered himself on the web portal and create his profile along with his educational information. Job Seeker can search various jobs and apply for the Job.</p>
+
+                <p>This Portal is also designed for the various employer who required to recruit employees in their organization. Employer can registered himself on the web portal and then he can upload information of various job vacancies in their organization. Employeer can view the applications of Job Seeker and send call latter to the job seekers.</p><b><b>
+				
               <p class="btn-more box noprint">&nbsp;</p>
           </div> <!-- /article -->
 

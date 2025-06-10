@@ -1,15 +1,3 @@
-<?php
-session_start();
-if(isset($_SESSION['$UserName'])){
-	header('location:Admin/index.php');
-} 
-if(isset($_SESSION['$UserName_job'])){
-	header('location:JobSeeker/index.php');
-} 
-if(isset($_SESSION['$UserName_emp'])){
-	header('location:Employer/index.php');
-} 
-?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
@@ -19,7 +7,7 @@ if(isset($_SESSION['$UserName_emp'])){
     <meta name="robots" content="all,follow" />
 
     
-    <title>JOB PORTAL BY SAMEER</title>
+    <title>JOB PORTAL BY sameer & parvez</title>
     <meta name="description" content="..." />
     <meta name="keywords" content="..." />
     
@@ -33,10 +21,7 @@ if(isset($_SESSION['$UserName_emp'])){
 	color: #000066;
 	font-weight: bold;
 }
-.style2 {
-	font-size: medium;
-	font-weight: bold;
-}
+.style2 {font-weight: bold}
 -->
     </style>
 </head>
@@ -63,13 +48,13 @@ include "menu.php"
             <p id="breadcrumbs">&nbsp;</p>
           <hr class="noscreen" />
             
-        </div> <!-- /strip -->
+        </div> 
 
         <!-- Content -->
         <div id="content">
 
            
-            <!-- /article -->
+            
 
             <hr class="noscreen" />
 
@@ -78,21 +63,63 @@ include "menu.php"
 
             <hr class="noscreen" />
             
-            <!-- Article -->
-           
-            <!-- /article -->
+            
 
             <hr class="noscreen" />
 
             <!-- Article -->
             <div class="article">
-                <h2><span><a href="#">Welcome To Job Portal System by JITESH</a></span></h2>
-				<h3><marquee>Welcome To Job Portal System by JITESH</marquee></h3>
+                <h2><span><a href="#">Our Employers</a></span></h2>
                
 
-                <p> <span class="style2">W</span>elcome to online Job Portal. It provides facility to the Job Seeker to search for various jobs as per his qualification. Here Job Seeker can registered himself on the web portal and create his profile along with his educational information. Job Seeker can search various jobs and apply for the Job.</p>
-              <p>This Portal is also designed for the various employer who required to recruit employees in their organization. Employer can registered himself on the web portal and then he can upload information of various job vacancies in their organization. Employeer can view the applications of Job Seeker and send call latter to the job seekers.</p>
-              <p align="right"> <img src="design/banner-4.jpg" alt="" width="510" height="300" /></p>
+                <p>
+                
+              <table width="100%" border="1" cellpadding="1" cellspacing="2" bordercolor="#006699" >
+<tr>
+<th height="32" bgcolor="#006699" class="style3"><div align="left" class="style9 style5 style2"><strong>Company Name</strong></div></th>
+<th bgcolor="#006699" class="style3"><div align="left" class="style9 style5 style2"><strong>Contact Person</strong></div></th>
+<th bgcolor="#006699" class="style3"><div align="left" class="style9 style5 style2"><strong>Email</strong></div></th>
+</tr>
+<?php
+// Establish Connection with Database
+$con = mysqli_connect("localhost","root","","job");
+
+// Specify the query to execute
+$sql = "select * from employer_reg where Status='Confirm'";
+// Execute query
+$result = mysqli_query($con,$sql);
+// Loop through each records
+//var_dump($result);
+while($row = mysqli_fetch_array($result))
+{
+$CompanyName=$row['CompanyName'];
+$ContactPerson=$row['ContactPerson'];
+$Email=$row['Email'];
+
+?>
+<tr>
+<td class="style3"><div align="left" class="style9 style5"><strong><?php echo $CompanyName;?></strong></div></td>
+<td class="style3"><div align="left" class="style9 style5"><strong><?php echo $ContactPerson;?></strong></div></td>
+<td class="style3"><div align="left" class="style9 style5"><strong><?php echo $Email;?></strong></div></td>
+</tr>
+<?php
+}
+// Retrieve Number of records returned
+$records = mysqli_num_rows($result);
+?>
+
+<?php
+// Close the connection
+mysqli_close($con);
+?>
+</table>
+    </td>
+  </tr>
+</table>
+                </p>
+
+                <div align="center"><a href="EmployerReg.php"><strong>New Employer? Register Here</strong></a>
+                  </div>
               <p class="btn-more box noprint">&nbsp;</p>
           </div> <!-- /article -->
 

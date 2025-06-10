@@ -1,11 +1,10 @@
 <?php
 session_start();
-if(isset($_SESSION['$UserName_emp'])){
-
-} 
-else{
-		header('location:../index.php');
+if(isset($_SESSION['$UserName_job'])){
 }
+	else{
+		header('location:../index.php');
+	}
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -16,7 +15,7 @@ else{
     <meta name="robots" content="all,follow" />
 
     
-    <title>jobportal.com</title>
+    <title>JOB PORTAL BY SAMEER</title>
     <meta name="description" content="..." />
     <meta name="keywords" content="..." />
     
@@ -79,30 +78,23 @@ include "menu.php"
 
             <!-- Article -->
             <div class="article">
-                <h2><span><a href="#">Welcome <?php echo $_SESSION['$UserName_emp'];?></a></span></h2>
-               <?php
+                <h2><span><a href="#">Welcome <?php echo $_SESSION['Name'];?></a></span></h2>
+               
+<?php
 $ID=$_SESSION['ID'];
 // Establish Connection with Database
 $con = mysqli_connect("localhost","root","","job");
-
-$sql = "select * from employer_reg where EmployerId ='".$ID."'  ";
+// Specify the query to execute
+$sql = "select * from jobseeker_reg where JobSeekId='".$ID."'  ";
 // Execute query
-$result = mysqli_query($con,$sql) or die( mysqli_error($con));
+$result = mysqli_query($con,$sql) or die(mysqli_error($con));
 // Loop through each records 
 $row = mysqli_fetch_array($result)
 ?>
                 <table width="100%" border="1" cellspacing="2" cellpadding="2">
                   <tr>
-                    <td><strong>Company ID:</strong></td>
-                    <td><?php echo $row['EmployerId'];?></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Company Name:</strong></td>
-                    <td><?php echo $row['CompanyName'];?></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Contact Person:</strong></td>
-                    <td><?php echo $row['ContactPerson'];?></td>
+                    <td><strong>Name:</strong></td>
+                    <td><?php echo $row['JobSeekerName'];?></td>
                   </tr>
                   <tr>
                     <td><strong>Address:</strong></td>
@@ -121,26 +113,34 @@ $row = mysqli_fetch_array($result)
                     <td><?php echo $row['Mobile'];?></td>
                   </tr>
                   <tr>
-                    <td><strong>Area of Work:</strong></td>
-                    <td><?php echo $row['Area_Work'];?></td>
+                    <td><strong>Highest Qualification:</strong></td>
+                    <td><?php echo $row['Qualification'];?></td>
                   </tr>
                   <tr>
-                    <td><strong>User Name:</strong></td>
-                    <td><?php echo $row['UserName'];?></td>
+                    <td><strong>Gender:</strong></td>
+                    <td><?php echo $row['Gender'];?></td>
                   </tr>
-                  
+                  <tr>
+                    <td><strong>Birth Date:</strong></td>
+                    <td><?php echo $row['BirthDate'];?></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Resume:</strong></td>
+                    <td><a href="../upload/<?php echo $row['Resume'];?>" target="_blank"><strong>View</strong></a></td>
+                  </tr>
                   <tr>
                     <td>&nbsp;</td>
-                    <td><a href="EditProfile.php?EmployerId=<?php echo $row['EmployerId']; ?>">Edit Profile</a></td>
+                    <td>&nbsp;</td>
                   </tr>
                 </table>
-                <?php
-                mysqli_close($con);
-                ?>
               <p>&nbsp;</p>
 
                 <p class="btn-more box noprint">&nbsp;</p>
           </div> <!-- /article -->
+
+            <?php
+            mysqli_close($con);
+            ?>
 
             <hr class="noscreen" />
             
